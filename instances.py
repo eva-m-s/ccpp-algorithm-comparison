@@ -10,7 +10,7 @@ class NetworkInstances:
     S = 8
 
     # Controllers maximum capacity
-    capacities_algorith = [1, 50, 1, 20, 3, 1, 10, 1]
+    capacities_algorith = [1, 8, 1, 3, 3, 1, 1, 1]
     capacities_model = [20, 80, 1]
 
 
