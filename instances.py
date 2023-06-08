@@ -10,8 +10,8 @@ class NetworkInstances:
     S = 8
 
     # Controllers maximum capacity
-    capacities_algorith = [1, 8, 1, 3, 3, 1, 1, 1]
-    capacities_model = [20, 80, 1]
+    capacities_algorith = [80, 10, 5, 5, 5, 5, 5, 5]
+    capacities_model = [80, 10, 5]
 
 
     # Loads to control switches
