@@ -1,16 +1,22 @@
-# This is a sample Python script.
+from instances import NetworkInstances
+from model import sdn_opt
+from model_tester import test_opt
+from algorithm import algorithm_ccpp
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+num_switches = NetworkInstances.S
+num_controllers = NetworkInstances.K
+max_load = NetworkInstances.capacities_model
+max_load_algorithm = NetworkInstances.capacities_algorith
+switch_loads = NetworkInstances.loads
+distances = NetworkInstances.d
+k = NetworkInstances.K
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    # sdn_opt(num_switches, num_controllers, max_load, switch_loads, distances)
+
+    # test_opt(num_switches, num_controllers, distances, max_load, switch_loads)
+
+    algorithm_ccpp(max_load_algorithm, switch_loads, num_switches, distances, k)
+
