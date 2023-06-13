@@ -14,7 +14,7 @@ def sp(max_load, switch_loads, num_switches, d, r, k):
 
     # Compare the two sums
     if switch_sum > max_sum:
-        print("The sum of loads needed to control the switches exceeds controllers capacity. Problem cannot be solved.")
+        #print("The sum of loads needed to control the switches exceeds controllers capacity. Problem cannot be solved.")
         return None
     else:
         # Initialize Model
@@ -74,15 +74,15 @@ def sp(max_load, switch_loads, num_switches, d, r, k):
                 # Convert the list of used distances to a numpy array if needed
                 used_distances = np.array(used_distances)
                 total_distance = np.sum(used_distances)
-                print('Distances array:', used_distances)
-                print('Num of controllers: ', m.options.ObjFcnVal)
-                print('Total distance:', total_distance)
-                print('Z: ', z)
-                print('C: ', c)
+                #print('Distances array:', used_distances)
+                #print('Num of controllers: ', m.options.ObjFcnVal)
+                #print('Total distance:', total_distance)
+                #print('Z: ', z)
+                #print('C: ', c)
                 return m.options.ObjFcnVal
 
         except Exception as e:
-            print(e)
+            #print(e)
             # Take appropriate action when a solution is not found
             return k+1
 

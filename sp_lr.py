@@ -14,7 +14,7 @@ def sp_lr(max_load, switch_loads, num_switches, d, r, k):
 
     # Compare the two sums
     if switch_sum > max_sum:
-        print("The sum of loads needed to control the switches exceeds controllers capacity. Problem cannot be solved.")
+        #print("The sum of loads needed to control the switches exceeds controllers capacity. Problem cannot be solved.")
         return None
     else:
         # Initialize Model
@@ -59,10 +59,10 @@ def sp_lr(max_load, switch_loads, num_switches, d, r, k):
             if m.options.APPSTATUS == 1:  # solution successful
                 # print("Objective function value =", m.options.ObjFcnVal)
                 # print('Z: ', z)
-                print('C: ', c)
+                #print('C: ', c)
                 return m.options.ObjFcnVal
 
         except Exception as e:
-            print(e)
+            #print(e)
             # Take appropriate action when a solution is not found
             return k+1
