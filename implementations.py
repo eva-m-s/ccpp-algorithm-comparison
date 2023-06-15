@@ -16,7 +16,8 @@ def geeko_implementation(num_switches, num_controllers, max_load, switch_loads, 
     # Compare the two sums
     if switch_sum > max_sum:
         #print("The sum of loads needed to control the switches exceeds controllers capacity. Problem cannot be solved.")
-        return None
+        print("Condition fail")
+        return None, None
     else:
         # Initialize Model
         m = GEKKO(remote=False)
@@ -68,16 +69,19 @@ def geeko_implementation(num_switches, num_controllers, max_load, switch_loads, 
 
         try:
             m.solve(disp=False)
-            if m.options.APPSTATUS == 1:  # solution successful
-                pass
-                # print("Objective function value =", m.options.ObjFcnVal)
-                # print("Switches assignment: \n", z)
-                # print("\nControllers state: \n", c)
-
         except Exception as e:
-            pass
+            # print("Exception")
+            return None, None
             # print(e)
             # print("Solution not found")
+        if m.options.APPSTATUS == 1:  # solution successful
+            c_sum = []
+            for i in list(c):
+                c_sum.append(*i)
+            # print("Objective function value =", m.options.ObjFcnVal)
+            # print("Switches assignment: \n", z)
+            # print("\nControllers state: \n", c)
+            return m.options.ObjFcnVal, c_sum.count(1.0)
 
 
 def article_implementation(num_switches, max_load_algorithm, switch_loads, distances, k):
@@ -86,7 +90,6 @@ def article_implementation(num_switches, max_load_algorithm, switch_loads, dista
     dis_array = distances.flatten()
     # Sort the 1D array in ascending order
     dis_array = np.sort(dis_array)
-
     # Step 2: Binary search for the minimum radius r
     min_radius = None
     min_controllers = None
@@ -114,15 +117,21 @@ def article_implementation(num_switches, max_load_algorithm, switch_loads, dista
 
 
     # Step 3: Find placement for minimum radius
+    print(f"STEP 3 {min_radius} {num_controllers}")
     min_radius2 = None
     min_controllers2 = k + 1
-
     index = lower
     num_controllers = sp(max_load_algorithm, switch_loads, num_switches, distances, dis_array[index], k)
-    #print(num_controllers)
 
     if num_controllers is not None:
+        print(num_controllers, k)
         while num_controllers > k:
             index += 1
+            if index == len(dis_array):
+                print(f"Index issue")
+                break
             num_controllers = sp(max_load_algorithm, switch_loads, num_switches, distances, dis_array[index], k)
+        return min_radius, num_controllers
 
+    else:
+        return None, None

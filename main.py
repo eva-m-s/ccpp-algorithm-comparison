@@ -17,9 +17,9 @@ if __name__ == '__main__':
 
     # sdn_opt(num_switches, num_controllers, max_load, switch_loads, distances)
 
-    # test_opt(num_switches, num_controllers, distances, max_load, switch_loads)
+    #test_opt(num_switches, num_controllers, distances, max_load, switch_loads)
 
-    # algorithm_ccpp(max_load_algorithm, switch_loads, num_switches, distances, k)
+    algorithm_ccpp(max_load_algorithm, switch_loads, num_switches, distances, k)
 
-    sdn_opt_v2(num_switches, num_controllers, max_load_algorithm, switch_loads, distances, k)
+    #sdn_opt_v2(num_switches, num_controllers, max_load_algorithm, switch_loads, distances, k)
 

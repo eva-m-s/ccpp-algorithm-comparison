@@ -50,6 +50,7 @@ def algorithm_ccpp(max_load_algorithm, switch_loads, num_switches, distances, k)
     if num_controllers is not None:
         while num_controllers > k:
             index += 1
+            print(f"Index {index}, {len(dis_array)}")
             num_controllers = sp(max_load_algorithm, switch_loads, num_switches, distances, dis_array[index], k)
 
         print('Step 1:')
